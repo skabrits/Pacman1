@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Opecv/demo_cone.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Opecv/demo_lane.png" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/Opecv/final_challenge.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pacman/packman.png" charset="ISO-8859-1" />
+  </component>
+</project>
