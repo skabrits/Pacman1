@@ -18,13 +18,19 @@ from array_to_graph import convert_mas_to_graf, convert, level, answ
 from itertools import product as pdct
 
 import xlrd
+difficulty = 1
 
 workbook = xlrd.open_workbook('Pacman_config.xlsx')
 worksheet = workbook.sheet_by_index(0)
 speeds = dict()
 conditions = ["nm", "nd","ft","fd"]
-for i in pdct(, conditions):
-    speeds[i] = worksheet.row_values(1, start_rowx=1, end_rowx=4)
+levels = list(worksheet.col_values(0, start_rowx=2, end_rowx=6))
+for i in pdct(levels, conditions):
+    cval = worksheet.cell(levels.index(i[0])+2, conditions.index(i[1])+1).value
+    if cval == "-":
+        speeds[i] = 0
+    else:
+        speeds[i] = float(cval)
 
 coef = 14.95
 left_offset = 98
@@ -202,7 +208,7 @@ class MouseInput(layer.Layer):
     def __init__(self):
         super(MouseInput, self).__init__()
 
-        self.pacman = Object(1 + 7 * j, 0, 'packman.png', 50)
+        self.pacman = Object(1 + 7 * j, 0, 'packman.png', 50*speeds()/100)
         self.pacman.sprite.scale = 1 / 24
         self.add(self.pacman.sprite)
 
