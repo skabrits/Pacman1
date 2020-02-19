@@ -119,8 +119,8 @@ def kuda(self, Packman):
         if (graf_vert_to_steps[self.vert] != -1):
             where = min(map(lambda x: (graf_vert_to_steps[x], x) if x in tr_set else (10000000,x), graf[self.vert]))
             break
-    print(graf_vert_to_steps)
-    return self.abs_speed * (where - self.vert)
+    print(Packman)
+    return self.abs_speed * (where[1] - self.vert)
 
 
 
@@ -208,7 +208,7 @@ class MouseInput(layer.Layer):
     def __init__(self):
         super(MouseInput, self).__init__()
 
-        self.pacman = Object(1 + 7 * j, 0, 'packman.png', 50*speeds()/100)
+        self.pacman = Object(1 + 7 * j, 0, 'packman.png', 50)
         self.pacman.sprite.scale = 1 / 24
         self.add(self.pacman.sprite)
 
@@ -245,7 +245,6 @@ class Level1(cocos.scene.Scene):
         background.add(self.lbl)
         self.add(background)
 
-        kuda1 = partial(kuda, Packman=Pack_c)
         blue_prived = Object(2 + j, 50, 'blue.png', 50, kuda1)
         blue_prived.sprite.scale = 1 / 14
         privedenia.append(blue_prived)
